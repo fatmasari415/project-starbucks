@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situation - Analisis Starbucks 2024–2025</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Copy of styles from index.html (trimmed to relevant rules) */
+        :root{--primary:#006241;--primary-light:#e8f5ef;--bg:#f4f7f6;--text:#2b3641;--text-light:#475569;--muted:#64748b}
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+        body{background:var(--bg);color:var(--text);line-height:1.75}
+        header{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.04)}
+        .navbar{max-width:1200px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+        .nav-brand{font-size:16px;font-weight:800;color:var(--primary);letter-spacing:1px}
+        .nav-links{display:flex;gap:8px;flex-wrap:wrap}
+        .nav-links a{text-decoration:none;padding:8px 16px;border-radius:999px;color:var(--text-light);font-weight:600;font-size:14px;transition:all .3s}
+        .nav-links a:hover,.nav-links a:focus{background:var(--primary-light);color:var(--primary)}
+        .section{max-width:1200px;margin:auto;padding:60px 24px}
+        .section-title{text-align:center;margin-bottom:40px}
+        .section-title h2{font-size:36px;font-weight:800;color:var(--primary)}
+        .tableau-container{background:white;padding:16px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.04);margin-bottom:32px;overflow:hidden;width:100%;border:1px solid rgba(0,0,0,.01)}
+        .card{background:white;padding:40px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.03);margin-bottom:24px;border:1px solid rgba(0,0,0,.01)}
+        .highlight{background:#fff;border-left:6px solid var(--primary);padding:40px;border-radius:20px;margin-bottom:32px}
+        footer{background:#003322;color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:14px}
+        @media(max-width:768px){.navbar{flex-direction:column;gap:16px;text-align:center}.section{padding:40px 20px}.card{padding:24px}.highlight{padding:24px}}
+    </style>
+    <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="nav-brand">KELOMPOK 6</div>
+        <div class="nav-links">
+            <a href="index.html">Team</a>
+            <a href="situation.html">Situation</a>
+            <a href="complication.html">Complication</a>
+            <a href="resolution.html">Resolution</a>
+            <a href="conclusion.html">Conclusion</a>
+        </div>
+    </nav>
+</header>
+
+<section id="situation" class="section">
+    <div class="section-title">
+        <h2>Situation</h2>
+    </div>
+
+    <!-- Responsive Tableau Embed (Situation) -->
+    <div class="tableau-container">
+        <div class='tableauPlaceholder' id='viz_situation' style='position: relative; width: 100%;'>
+            <object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='ProjectStarbucks&#47;Situation' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+            </object>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Deskripsi Dashboard</h3>
+        <p>Dashboard Situation menampilkan gambaran umum kondisi bisnis Starbucks pada periode 2024–2025 yang mencakup kinerja penjualan, karakteristik pelanggan, serta pola penggunaan kanal pemesanan. Visualisasi utama meliputi tren perbandingan jumlah pesanan antara tahun 2024 dan 2025, distribusi demografi pelanggan berdasarkan kelompok usia, komposisi produk antara minuman dan makanan, serta kontribusi kanal pemesanan dan wilayah penjualan. Dashboard ini digunakan untuk memberikan gambaran kondisi bisnis secara keseluruhan sebelum dilakukan analisis lebih lanjut.</p>
+    </div>
+
+    <div class="highlight">
+        <h4>Insight (Kondisi Saat Ini)</h4>
+        <ul>
+            <li><strong>Kinerja penjualan tahun 2025</strong> menunjukkan tren yang stabil dan berada di atas performa tahun sebelumnya, dengan pencapaian total 50.068 pesanan senilai $744.662,49 dari 14.482 pelanggan serta lonjakan permintaan tertinggi pada bulan Juli dan Oktober.</li>
+            <li><strong>Demografi pasar utama</strong> sangat didominasi oleh kelompok usia produktif muda, di mana segmen usia 25–34 tahun memegang porsi terbesar sebesar 30%, diikuti oleh kelompok usia 35–44 tahun dan 18–24 tahun.</li>
+            <li><strong>Komposisi penjualan produk</strong> masih memperlihatkan ketimpangan yang signifikan karena lini minuman mendominasi sebesar 68% dari total transaksi, sementara kontribusi produk makanan baru mencapai 32%.</li>
+            <li><strong>Karakteristik kanal dan wilayah</strong> menandakan bahwa pelanggan dengan status member lebih aktif bertransaksi melalui Mobile App, sedangkan konsumen non-member lebih memilih Drive-Thru, kasir In-Store, atau Kiosk, dengan wilayah Suburban sebagai penyumbang pendapatan terbesar.</li>
+        </ul>
+    </div>
+</section>
+
+<footer>
+    © 2026 Data Visualisasi Kelompok 6
+</footer>
+
+<script>
+    const setupResponsiveViz = (containerId) => {
+        const placeholder = document.getElementById(containerId);
+        if (!placeholder) return;
+        const viz = placeholder.getElementsByTagName('object')[0];
+        if (!viz) return;
+        if (placeholder.offsetWidth > 800) {
+            viz.style.width = '100%';
+            viz.style.height = '850px'; 
+        } else if (placeholder.offsetWidth > 500) {
+            viz.style.width = '100%';
+            viz.style.height = '750px';
+        } else {
+            viz.style.width = '100%';
+            viz.style.height = '1200px'; 
+        }
+    };
+
+    setupResponsiveViz('viz_situation');
+
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach(section => {
+            const top = section.offsetTop - 140;
+            if (scrollY >= top) current = section.getAttribute("id");
+        });
+
+        navLinks.forEach(link => {
+            link.style.background = "";
+            link.style.color = "";
+            if(link.getAttribute("href") === "#" + current){
+                link.style.background = "#006241";
+                link.style.color = "white";
+            }
+        });
+    });
+</script>
+</body>
+</html>
