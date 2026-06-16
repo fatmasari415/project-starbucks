@@ -157,11 +157,30 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             border: 1px solid rgba(0,0,0,0.02);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
         }
 
         .member:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.07);
+        }
+
+        .member img {
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media(max-width: 768px) {
+            .member img {
+                width: 140px;
+                height: 140px;
+            }
         }
 
         .member h3 {
@@ -402,10 +421,12 @@
 
     <div class="team">
         <div class="member">
+            <img src="fatma.jpeg" alt="Sri Tutut Fatmasari">
             <h3>Sri Tutut Fatmasari</h3>
             <p>23082010012</p>
         </div>
         <div class="member">
+            <img src="adel.png" alt="Adeline Angelique">
             <h3>Adeline Angelique</h3>
             <p>23082010229</p>
         </div>
