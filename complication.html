@@ -7,7 +7,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root{--primary:#006241;--primary-light:#e8f5ef;--bg:#f4f7f6;--text:#2b3641;--text-light:#475569;--muted:#64748b}
+        :root{--primary:#006241;--primary-light:#e8f5ef;--secondary:#00A862;--bg:#f4f7f6;--text:#2b3641;--text-light:#475569;--muted:#64748b}
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
         body{background:var(--bg);color:var(--text);line-height:1.75}
         header{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.04)}
@@ -16,12 +16,76 @@
         .nav-links{display:flex;gap:8px;flex-wrap:wrap}
         .nav-links a{text-decoration:none;padding:8px 16px;border-radius:999px;color:var(--text-light);font-weight:600;font-size:14px;transition:all .3s}
         .nav-links a:hover,.nav-links a:focus{background:var(--primary-light);color:var(--primary)}
+        
+        /* Highlight Menu Aktif di Header */
+        .nav-links a.active {background:var(--primary);color:white}
+
         .section{max-width:1200px;margin:auto;padding:60px 24px}
+        .section-title{text-align:center;margin-bottom:40px}
+        .section-title h2{font-size:36px;font-weight:800;color:var(--primary)}
+        
+        /* --- BASE STYLING & ANIMASI TIMBUL UNTUK CARD & HIGHLIGHT --- */
+        .tableau-container, .card, .highlight {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, box-shadow;
+        }
+
         .tableau-container{background:white;padding:16px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.04);margin-bottom:32px;overflow:hidden;width:100%;border:1px solid rgba(0,0,0,.01)}
+        .tableau-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(0, 64, 40, 0.06);
+        }
+        
+        /* Justify Teks pada Card */
         .card{background:white;padding:40px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.03);margin-bottom:24px;border:1px solid rgba(0,0,0,.01)}
-        .highlight{background:#fff;border-left:6px solid var(--primary);padding:40px;border-radius:20px;margin-bottom:32px}
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+        .card h3 {margin-bottom:12px; font-size: 22px; font-weight: 700; color: var(--primary);}
+        .card p{text-align:justify; color: var(--text-light); font-size: 15.5px;}
+        
+        /* Menyesuaikan highlight agar seragam dengan card (Tanpa garis samping) */
+        .highlight{background:#ffffff;padding:40px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.03);margin-bottom:32px;border:1px solid rgba(0,0,0,.01)}
+        .highlight:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+        .highlight h4 {margin-bottom:16px; font-size: 22px; font-weight: 700; color: var(--primary);}
+        .highlight ul{text-align:justify; list-style: none; display: grid; gap: 12px;}
+        .highlight li{
+            font-size: 15.5px;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 24px;
+        }
+        
+        /* Bullet point bulat custom menggunakan warna primary */
+        .highlight li::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Styling Tombol Navigasi Sesuai Persis dengan index.html */
+        .nav-buttons {display:flex;justify-content:flex-end;gap:12px;margin-top:32px;margin-bottom:16px}
+        .btn {text-decoration:none;padding:12px 24px;border-radius:999px;font-weight:600;font-size:14px;transition:all .3s ease;display:inline-flex;align-items:center}
+        
+        .btn-prev {background:transparent;color:var(--text-light);border:1px solid #cbd5e1}
+        .btn-prev:hover {background:#f1f5f9;color:var(--text);transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,0.04)}
+        .btn-prev:active {transform:translateY(0)}
+
+        .btn-next {background:var(--primary);color:white;border:1px solid var(--primary);box-shadow:0 8px 20px rgba(0, 98, 65, 0.2)}
+        .btn-next:hover {background:var(--secondary);border-color:var(--secondary);transform:translateY(-2px);box-shadow:0 12px 30px rgba(0, 168, 98, 0.3)}
+        .btn-next:active {transform:translateY(0)}
+
         footer{background:#003322;color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:14px}
-        @media(max-width:768px){.navbar{flex-direction:column;gap:16px;text-align:center}.section{padding:40px 20px}.card{padding:24px}.highlight{padding:24px}}
+        @media(max-width:768px){.navbar{flex-direction:column;gap:16px;text-align:center}.section{padding:40px 20px}.card{padding:24px}.highlight{padding:24px}.nav-buttons{justify-content:center;width:100%}}
     </style>
     <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
 </head>
@@ -32,7 +96,7 @@
         <div class="nav-links">
             <a href="index.html">Team</a>
             <a href="situation.html">Situation</a>
-            <a href="complication.html">Complication</a>
+            <a href="complication.html" class="active">Complication</a>
             <a href="resolution.html">Resolution</a>
             <a href="conclusion.html">Conclusion</a>
         </div>
@@ -44,6 +108,7 @@
         <h2>Complication</h2>
     </div>
 
+    <!-- Responsive Tableau Embed (Complication) -->
     <div class="tableau-container">
         <div class='tableauPlaceholder' id='viz_complication' style='position: relative; width: 100%;'>
             <object class='tableauViz' style='display:none;'>
@@ -65,17 +130,21 @@
 
     <div class="card">
         <h3>Deskripsi Dashboard</h3>
-        <p>Dashboard Complication menampilkan analisis terhadap berbagai tantangan yang terjadi dalam bisnis Starbucks, khususnya terkait pertumbuhan yang stagnan. Visualisasi pada dashboard ini mencakup perbandingan pertumbuhan pesanan, pendapatan, dan jumlah pelanggan yang masih berada pada level rendah, distribusi kontribusi pelanggan berdasarkan kelompok usia, serta pola ketergantungan terhadap segmen pelanggan tertentu. Selain itu, dashboard ini juga memperlihatkan ketidakseimbangan kontribusi kanal pemesanan serta dominasi produk minuman di seluruh channel penjualan.</p>
+        <p>Melalui visualisasi tren pesanan, pendapatan, dan jumlah pelanggan yang berada di level rendah, dashboard ini memetakan akar masalah stagnasi pertumbuhan Starbucks, termasuk ketidakseimbangan kanal penjualan dan dominasi kategori produk. Namun, analisis ini juga mengungkap fakta krusial bahwa kekuatan utama bisnis saat ini sangat bergantung pada segmen pelanggan usia 25–34 tahun. Tingginya ketergantungan pada kelompok ini membuka peluang pasar yang sangat besar untuk dioptimalkan sebagai pendorong utama pemulihan bisnis.</p>
     </div>
 
     <div class="highlight">
-        <h4>Insight (Tantangan Bisnis)</h4>
+        <h4>Insight Utama</h4>
         <ul>
-            <li><strong>Stagnasi pertumbuhan riil</strong> menjadi tantangan utama karena ekspansi bisnis tahun 2025 melambat di bawah 1%, dengan kenaikan volume pesanan yang hanya menyentuh angka 0,27%, pendapatan 0,36%, dan penambahan pelanggan baru sebesar 0,21%.</li>
-            <li><strong>Risiko ketergantungan segmen</strong> yang tinggi terlihat dari profil transaksi member maupun non-member yang bertumpu pada kelompok usia 25–34 tahun, sehingga bisnis menjadi rentan jika terjadi pergeseran tren atau perilaku pada kelompok umur tersebut.</li>
-            <li><strong>Optimalisasi kanal penjualan</strong> masih belum merata akibat kontribusi pendapatan yang menumpuk dan terkonsentrasi pada beberapa kanal utama, sementara potensi kanal digital dan konvensional lainnya belum tergali maksimal.</li>
-            <li><strong>Rendahnya proporsi makanan</strong> di hampir seluruh lini pemesanan mengindikasikan bahwa strategi cross-selling serta program bundling menu belum berjalan optimal untuk mendongkrak nilai transaksi harian.</li>
+            <li>Kelompok usia 25–34 tahun menjadi kelompok usia dengan pendapatan terbesar mendominasi baik di kategori Anggota maupun Non-Anggota serta menunjukkan aktivitas transaksi terbanyak di Mobile App</li>
+            <li>Mobile App terbukti menjadi kanal penyumbang pendapatan utama dengan persentase mencapai 52% dari total pendapatan keseluruhan</li>
+            <li>Rendahnya proporsi pembelian produk makanan terjadi secara merata di hampir seluruh kanal pemesanan</li>
         </ul>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="situation.html" class="btn btn-prev">← Kembali</a>
+        <a href="resolution.html" class="btn btn-next">Selanjutnya →</a>
     </div>
 </section>
 
