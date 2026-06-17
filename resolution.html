@@ -15,74 +15,59 @@
         .nav-brand{font-size:16px;font-weight:800;color:var(--primary);letter-spacing:1px}
         .nav-links{display:flex;gap:8px;flex-wrap:wrap}
         .nav-links a{text-decoration:none;padding:8px 16px;border-radius:999px;color:var(--text-light);font-weight:600;font-size:14px;transition:all .3s}
-        .nav-links a:hover,.nav-links a:focus{background:var(--primary-light);color:var(--primary)}
-        
-        /* Highlight Menu Aktif di Header */
+        .nav-links a:hover,.nav-links a.active{background:var(--primary-light);color:var(--primary)}
         .nav-links a.active {background:var(--primary);color:white}
 
         .section{max-width:1200px;margin:auto;padding:60px 24px}
         .section-title{text-align:center;margin-bottom:40px}
         .section-title h2{font-size:36px;font-weight:800;color:var(--primary)}
         
-        /* --- BASE STYLING & ANIMASI TIMBUL UNTUK CARD & HIGHLIGHT --- */
         .tableau-container, .card, .highlight {
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, box-shadow;
         }
 
         .tableau-container{background:white;padding:16px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.04);margin-bottom:32px;overflow:hidden;width:100%;border:1px solid rgba(0,0,0,.01)}
-        .tableau-container:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 45px rgba(0, 64, 40, 0.06);
-        }
+        .tableau-container:hover {transform: translateY(-4px);box-shadow: 0 20px 45px rgba(0, 64, 40, 0.06);}
         
-        /* Justify Teks pada Card */
         .card{background:white;padding:40px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.03);margin-bottom:24px;border:1px solid rgba(0,0,0,.01)}
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-        }
+        .card:hover {transform: translateY(-4px);box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);}
         .card h3 {margin-bottom:12px; font-size: 22px; font-weight: 700; color: var(--primary);}
         .card p{text-align:justify; color: var(--text-light); font-size: 15.5px;}
         
-        /* Menyesuaikan highlight agar seragam dengan card (Tanpa garis samping) */
         .highlight{background:#ffffff;padding:40px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.03);margin-bottom:32px;border:1px solid rgba(0,0,0,.01)}
-        .highlight:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-        }
+        .highlight:hover {transform: translateY(-4px);box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);}
         .highlight h4 {margin-bottom:16px; font-size: 22px; font-weight: 700; color: var(--primary);}
         .highlight ul{text-align:justify; list-style: none; display: grid; gap: 12px;}
-        .highlight li{
-            font-size: 15.5px;
-            color: var(--text-light);
-            position: relative;
-            padding-left: 24px;
+        .highlight li{font-size: 15.5px; color: var(--text-light); position: relative; padding-left: 24px;}
+        .highlight li::before {content: ""; position: absolute; left: 4px; top: 10px; width: 6px; height: 6px; background-color: var(--primary); border-radius: 50%;}
+
+        /* Perbaikan Sub-list agar font benar-benar sama */
+        .highlight .sub-list {margin-top:12px; margin-left:8px; gap:12px; display: grid;}
+        .highlight .sub-list li {
+            font-size: 15.5px !important; 
+            color: var(--text-light) !important; 
+            padding-left: 20px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 400;
         }
-        
-        /* Bullet point bulat custom menggunakan warna primary */
-        .highlight li::before {
+        .highlight .sub-list li::before {
             content: "";
             position: absolute;
             left: 4px;
             top: 10px;
-            width: 6px;
-            height: 6px;
-            background-color: var(--primary);
+            width: 7px;
+            height: 7px;
+            background-color: var(--secondary);
             border-radius: 50%;
         }
 
-        /* Styling Tombol Navigasi Sesuai Persis dengan Halaman Lain */
         .nav-buttons {display:flex;justify-content:flex-end;gap:12px;margin-top:32px;margin-bottom:16px}
         .btn {text-decoration:none;padding:12px 24px;border-radius:999px;font-weight:600;font-size:14px;transition:all .3s ease;display:inline-flex;align-items:center}
-        
         .btn-prev {background:transparent;color:var(--text-light);border:1px solid #cbd5e1}
         .btn-prev:hover {background:#f1f5f9;color:var(--text);transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,0.04)}
-        .btn-prev:active {transform:translateY(0)}
-
         .btn-next {background:var(--primary);color:white;border:1px solid var(--primary);box-shadow:0 8px 20px rgba(0, 98, 65, 0.2)}
         .btn-next:hover {background:var(--secondary);border-color:var(--secondary);transform:translateY(-2px);box-shadow:0 12px 30px rgba(0, 168, 98, 0.3)}
-        .btn-next:active {transform:translateY(0)}
 
         footer{background:#003322;color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:14px}
         @media(max-width:768px){.navbar{flex-direction:column;gap:16px;text-align:center}.section{padding:40px 20px}.card{padding:24px}.highlight{padding:24px}.nav-buttons{justify-content:center;width:100%}}
@@ -108,7 +93,6 @@
         <h2>Resolution</h2>
     </div>
 
-    <!-- Responsive Tableau Embed (Resolution) -->
     <div class="tableau-container">
         <div class='tableauPlaceholder' id='viz_resolution' style='position: relative; width: 100%;'>
             <object class='tableauViz' style='display:none;'>
@@ -118,33 +102,35 @@
                 <param name='name' value='ProjectStarbucks&#47;Resolution' />
                 <param name='tabs' value='no' />
                 <param name='toolbar' value='yes' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='language' value='en-US' />
             </object>
         </div>
     </div>
 
     <div class="card">
         <h3>Deskripsi Dashboard</h3>
-        <p>Dashboard ini menampilkan visualisasi yang dirancang untuk memacu pertumbuhan bisnis Starbucks pada tahun 2026 dari kondisi stagnan. Dashboard ini mencakup penetapan target pertumbuhan, pemetaan inisiatif strategis seperti program loyalitas, optimalisasi penjualan makanan, serta implementasi pendekatan personalisasi pelanggan. Selain itu, dashboard ini menyediakan analisis prioritas strategi yang dikelompokkan berdasarkan setiap kanal pemesanan guna meningkatkan nilai transaksi dan keterikatan (engagement) pelanggan secara terukur.</p>
+        <p>Dashboard ini menampilkan visualisasi yang dirancang untuk memacu pertumbuhan bisnis Starbucks pada tahun 2026 dari kondisi stagnan. Dashboard ini mencakup penetapan target pertumbuhan, pemetaan inisiatif strategis seperti program loyalitas, optimalisasi penjualan makanan, serta implementasi pendekatan personalisasi pelanggan.</p>
     </div>
 
     <div class="highlight">
         <h4>Solusi Strategis 2026</h4>
         <ul>
-            <li>Menetapkan target pertumbuhan penjualan tahunan sebesar 5% sebagai sasaran realistis pemulihan bisnis pada tahun 2026</li>
-            <li>Meluncurkan program konversi pelanggan Non-Anggota menjadi Anggota lewat insentif aplikasi untuk mengamankan potensi pendapatan yang saat ini mencapai 49,5%</li>
-            <li>Menyediakan fitur kustomisasi menu yang lebih fleksibel di setiap kanal pemesanan sebagai pendorong utama peningkatan nilai transaksi per pelanggan</li>
-            <li>Mendesain paket promosi dengan harga psikologis di kisaran $12 untuk mencocokkan rata-rata kemampuan bayar mayoritas pelanggan saat ini</li>
-            <li>Menerapkan matriks prioritas strategi dengan menempatkan kanal Drive-Thru pada Prioritas 5 sebagai fokus utama, sedangkan kanal Mobile App, In-Store, dan Kiosk berada pada Prioritas 4 berdasarkan kombinasi data pendapatan, celah pasar makanan, dan tren kustomisasi menu</li>
+            <li>Menetapkan target pertumbuhan penjualan tahunan sebesar 5% sebagai sasaran realistis pemulihan bisnis pada tahun 2026.</li>
+            <li>Meluncurkan program konversi pelanggan Non-Anggota menjadi Anggota lewat insentif aplikasi untuk mengamankan potensi pendapatan yang saat ini mencapai 49,5%.</li>
+            <li>Menyediakan fitur kustomisasi menu yang lebih fleksibel di setiap kanal pemesanan sebagai pendorong utama peningkatan nilai transaksi per pelanggan.</li>
+            <li>Mendesain paket promosi dengan harga psikologis di kisaran $12 untuk mencocokkan rata-rata kemampuan bayar mayoritas pelanggan saat ini.</li>
+            <li>Menerapkan matriks prioritas strategi per kanal pemesanan:
+                <ul class="sub-list">
+                    <li>Kanal Drive-Thru (Prioritas 5 - Fokus Utama)
+                        <br>Berfokus pada penerapan menu bundling praktis seharga $12 dengan layanan cepat guna mendongkrak penjualan makanan, menyediakan opsi kustomisasi standar, serta menjadi jalur konversi keanggotaan via verbal atau QR code.</li>
+                    <li>Kanal Mobile App (Prioritas 4)
+                        <br>Berfokus pada program reward keanggotaan, pusat aktivasi member baru, serta menjadi pusat visualisasi fitur kustomisasi menu secara mendalam karena karakteristik penggunanya memiliki tren personalisasi pesanan yang paling tinggi.</li>
+                    <li>Kanal In-Store Cashier dan Kiosk (Prioritas 4)
+                        <br>Berfokus pada menu paket hemat reguler seharga $12 untuk mendorong pembelian produk makanan, menyediakan opsi kustomisasi menu reguler, serta mengaktifkan edukasi konversi anggota sebelum pembayaran selesai.</li>
+                </ul>
+            </li>
         </ul>
     </div>
 
-    <!-- Tombol Navigasi Halaman Sebelumnya / Selanjutnya -->
     <div class="nav-buttons">
         <a href="complication.html" class="btn btn-prev">← Kembali</a>
         <a href="conclusion.html" class="btn btn-next">Selanjutnya →</a>
@@ -165,7 +151,6 @@
         else if (placeholder.offsetWidth > 500) { viz.style.width = '100%'; viz.style.height = '750px'; }
         else { viz.style.width = '100%'; viz.style.height = '1200px'; }
     };
-
     setupResponsiveViz('viz_resolution');
 </script>
 </body>
