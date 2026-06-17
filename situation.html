@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Situation - Analisis Starbucks 2024–2025</title>
 
-    <!-- Google Fonts: Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* Copy of styles from index.html (trimmed to relevant rules) */
-        :root{--primary:#006241;--primary-light:#e8f5ef;--bg:#f4f7f6;--text:#2b3641;--text-light:#475569;--muted:#64748b}
+        :root{--primary:#006241;--primary-light:#e8f5ef;--secondary:#00A862;--bg:#f4f7f6;--text:#2b3641;--text-light:#475569;--muted:#64748b}
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
         body{background:var(--bg);color:var(--text);line-height:1.75}
         header{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.04)}
@@ -18,14 +17,76 @@
         .nav-links{display:flex;gap:8px;flex-wrap:wrap}
         .nav-links a{text-decoration:none;padding:8px 16px;border-radius:999px;color:var(--text-light);font-weight:600;font-size:14px;transition:all .3s}
         .nav-links a:hover,.nav-links a:focus{background:var(--primary-light);color:var(--primary)}
+        
+        /* Highlight Menu Aktif di Header */
+        .nav-links a.active {background:var(--primary);color:white}
+
         .section{max-width:1200px;margin:auto;padding:60px 24px}
         .section-title{text-align:center;margin-bottom:40px}
         .section-title h2{font-size:36px;font-weight:800;color:var(--primary)}
+        
+        /* --- BASE STYLING & ANIMASI TIMBUL UNTUK CARD & HIGHLIGHT --- */
+        .tableau-container, .card, .highlight {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, box-shadow;
+        }
+
         .tableau-container{background:white;padding:16px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.04);margin-bottom:32px;overflow:hidden;width:100%;border:1px solid rgba(0,0,0,.01)}
+        .tableau-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(0, 64, 40, 0.06);
+        }
+
+        /* Justify Teks pada Card */
         .card{background:white;padding:40px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.03);margin-bottom:24px;border:1px solid rgba(0,0,0,.01)}
-        .highlight{background:#fff;border-left:6px solid var(--primary);padding:40px;border-radius:20px;margin-bottom:32px}
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+        .card h3 {margin-bottom:12px; font-size: 22px; font-weight: 700; color: var(--primary);}
+        .card p{text-align:justify; color: var(--text-light); font-size: 15.5px;}
+        
+        /* Mengubah highlight agar bentuknya seragam dengan card (Menghapus garis kiri) */
+        .highlight{background:#ffffff;padding:40px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.03);margin-bottom:32px;border:1px solid rgba(0,0,0,.01)}
+        .highlight:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+        .highlight h4 {margin-bottom:16px; font-size: 22px; font-weight: 700; color: var(--primary);}
+        .highlight ul{text-align:justify; list-style: none; display: grid; gap: 12px;}
+        .highlight li{
+            font-size: 15.5px;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 24px;
+        }
+        
+        /* Bullet point bulat custom menggunakan warna primary */
+        .highlight li::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Styling Tombol Navigasi Sesuai Persis dengan index.html */
+        .nav-buttons {display:flex;justify-content:flex-end;gap:12px;margin-top:32px;margin-bottom:16px}
+        .btn {text-decoration:none;padding:12px 24px;border-radius:999px;font-weight:600;font-size:14px;transition:all .3s ease;display:inline-flex;align-items:center}
+        
+        .btn-prev {background:transparent;color:var(--text-light);border:1px solid #cbd5e1}
+        .btn-prev:hover {background:#f1f5f9;color:var(--text);transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,0.04)}
+        .btn-prev:active {transform:translateY(0)}
+
+        .btn-next {background:var(--primary);color:white;border:1px solid var(--primary);box-shadow:0 8px 20px rgba(0, 98, 65, 0.2)}
+        .btn-next:hover {background:var(--secondary);border-color:var(--secondary);transform:translateY(-2px);box-shadow:0 12px 30px rgba(0, 168, 98, 0.3)}
+        .btn-next:active {transform:translateY(0)}
+
         footer{background:#003322;color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:14px}
-        @media(max-width:768px){.navbar{flex-direction:column;gap:16px;text-align:center}.section{padding:40px 20px}.card{padding:24px}.highlight{padding:24px}}
+        @media(max-width:768px){.navbar{flex-direction:column;gap:16px;text-align:center}.section{padding:40px 20px}.card{padding:24px}.highlight{padding:24px}.nav-buttons{justify-content:center;width:100%}}
     </style>
     <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
 </head>
@@ -35,7 +96,7 @@
         <div class="nav-brand">KELOMPOK 6</div>
         <div class="nav-links">
             <a href="index.html">Team</a>
-            <a href="situation.html">Situation</a>
+            <a href="situation.html" class="active">Situation</a>
             <a href="complication.html">Complication</a>
             <a href="resolution.html">Resolution</a>
             <a href="conclusion.html">Conclusion</a>
@@ -48,7 +109,6 @@
         <h2>Situation</h2>
     </div>
 
-    <!-- Responsive Tableau Embed (Situation) -->
     <div class="tableau-container">
         <div class='tableauPlaceholder' id='viz_situation' style='position: relative; width: 100%;'>
             <object class='tableauViz' style='display:none;'>
@@ -70,17 +130,23 @@
 
     <div class="card">
         <h3>Deskripsi Dashboard</h3>
-        <p>Dashboard Situation menampilkan gambaran umum kondisi bisnis Starbucks pada periode 2024–2025 yang mencakup kinerja penjualan, karakteristik pelanggan, serta pola penggunaan kanal pemesanan. Visualisasi utama meliputi tren perbandingan jumlah pesanan antara tahun 2024 dan 2025, distribusi demografi pelanggan berdasarkan kelompok usia, komposisi produk antara minuman dan makanan, serta kontribusi kanal pemesanan dan wilayah penjualan. Dashboard ini digunakan untuk memberikan gambaran kondisi bisnis secara keseluruhan sebelum dilakukan analisis lebih lanjut.</p>
+        <p>Dashboard ini menampilkan gambaran umum kondisi bisnis Starbucks pada periode 2024–2025 yang mencakup kinerja penjualan, karakteristik pelanggan, serta pola penggunaan kanal pemesanan. Visualisasi utama meliputi perbandingan total pesanan, pendapatan, dan jumlah pelanggan tahun 2025 terhadap tahun 2024, distribusi demografi pelanggan berdasarkan kelompok usia, komposisi produk antara minuman dan makanan, serta kontribusi kanal pemesanan dan wilayah penjualan.</p>
     </div>
 
     <div class="highlight">
-        <h4>Insight (Kondisi Saat Ini)</h4>
+        <h4>Insight Utama</h4>
         <ul>
-            <li><strong>Kinerja penjualan tahun 2025</strong> menunjukkan tren yang stabil dan berada di atas performa tahun sebelumnya, dengan pencapaian total 50.068 pesanan senilai $744.662,49 dari 14.482 pelanggan serta lonjakan permintaan tertinggi pada bulan Juli dan Oktober.</li>
-            <li><strong>Demografi pasar utama</strong> sangat didominasi oleh kelompok usia produktif muda, di mana segmen usia 25–34 tahun memegang porsi terbesar sebesar 30%, diikuti oleh kelompok usia 35–44 tahun dan 18–24 tahun.</li>
-            <li><strong>Komposisi penjualan produk</strong> masih memperlihatkan ketimpangan yang signifikan karena lini minuman mendominasi sebesar 68% dari total transaksi, sementara kontribusi produk makanan baru mencapai 32%.</li>
-            <li><strong>Karakteristik kanal dan wilayah</strong> menandakan bahwa pelanggan dengan status member lebih aktif bertransaksi melalui Mobile App, sedangkan konsumen non-member lebih memilih Drive-Thru, kasir In-Store, atau Kiosk, dengan wilayah Suburban sebagai penyumbang pendapatan terbesar.</li>
+            <li>Kinerja penjualan Starbucks pada tahun 2025 mencapai total 50.068 pesanan dengan pendapatan sebesar $744.662,49 dari 14.482 pelanggan</li>
+            <li>Performa penjualan bulanan tahun 2025 konsisten di atas 2024 dengan pola yang relatif stabil dengan puncak di bulan Juli dan Oktober</li>
+            <li>Kelompok usia produktif yaitu 25–34 tahun menjadi penopang bisnis terbesar dengan kontribusi mencapai 30% dari total pelanggan</li>
+            <li>Penjualan masih didominasi mutlak oleh produk minuman sebesar 68% sehingga menyisakan peluang besar pada produk makanan yang baru menyumbang 32%</li>
+            <li>Penggunaan Mobile App tersentralisasi pada pelanggan Anggota sedangkan pelanggan Non-Anggota masih tertahan di kanal fisik seperti Drive-Thru, In-Store, dan Kiosk</li>
         </ul>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="index.html" class="btn btn-prev">← Kembali</a>
+        <a href="complication.html" class="btn btn-next">Selanjutnya →</a>
     </div>
 </section>
 
@@ -107,26 +173,6 @@
     };
 
     setupResponsiveViz('viz_situation');
-
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-links a");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach(section => {
-            const top = section.offsetTop - 140;
-            if (scrollY >= top) current = section.getAttribute("id");
-        });
-
-        navLinks.forEach(link => {
-            link.style.background = "";
-            link.style.color = "";
-            if(link.getAttribute("href") === "#" + current){
-                link.style.background = "#006241";
-                link.style.color = "white";
-            }
-        });
-    });
 </script>
 </body>
 </html>
