@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analisis Starbucks 2024–2025</title>
 
-    <!-- Google Fonts: Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
@@ -86,6 +85,12 @@
             color: var(--primary);
         }
 
+        /* Highlight Menu Aktif di Header */
+        .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
         .hero {
             min-height: 75vh;
             display: flex;
@@ -99,7 +104,6 @@
                 radial-gradient(circle at bottom right, rgba(0, 98, 65, 0.08), transparent 45%);
         }
 
-        /* Logo diperbesar & efek border/box-shadow dihapus sesuai revisi */
         .logo {
             width: 150px;
             height: 150px;
@@ -139,6 +143,7 @@
             font-size: 16px;
             font-weight: 400;
             line-height: 1.8;
+            text-align: center; /* Diubah menjadi rata tengah (center) */
         }
 
         .team {
@@ -147,6 +152,7 @@
             gap: 24px;
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
         }
 
         .member {
@@ -211,186 +217,6 @@
             box-shadow: 0 12px 30px rgba(0, 168, 98, 0.3);
         }
 
-        .start-button:active {
-            transform: translateY(0);
-        }
-
-        .section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 60px 24px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 4px;
-            background: var(--primary); /* Diubah ke warna primary */
-            border-radius: 2px;
-        }
-
-        /* --- CONTAINER & CARD STYLING --- */
-        .tableau-container, .card, .highlight {
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, box-shadow;
-        }
-
-        .tableau-container {
-            background: white;
-            padding: 16px;
-            border-radius: 24px;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.04);
-            margin-bottom: 32px;
-            overflow: hidden;
-            width: 100%;
-            border: 1px solid rgba(0,0,0,0.01);
-        }
-
-        .tableau-container:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 45px rgba(0, 64, 40, 0.06);
-        }
-
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.03);
-            margin-bottom: 24px;
-            border: 1px solid rgba(0,0,0,0.01);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-        }
-
-        .card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-            letter-spacing: -0.3px;
-        }
-
-        .card p { 
-            font-size: 15.5px;
-            color: var(--text-light);
-            line-height: 1.85; 
-            text-align: justify;
-            margin-bottom: 16px;
-        }
-        
-        .card p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* --- INSIGHT LISTS (HIGHLIGHT) --- */
-        .highlight {
-            background: #ffffff;
-            border-left: 6px solid var(--primary);
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 32px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-        }
-
-        .highlight:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(0, 98, 65, 0.06);
-        }
-
-        .highlight h4 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .highlight ul {
-            list-style: none;
-            display: grid;
-            gap: 16px;
-        }
-
-        .highlight li {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.7;
-            position: relative;
-            padding-left: 24px;
-            text-align: justify;
-        }
-
-        /* Warna Bullet Bulat Diubah Menggunakan Warna Primary (Hijau Tua) */
-        .highlight li::before {
-            content: "";
-            position: absolute;
-            left: 4px;
-            top: 10px;
-            width: 6px;
-            height: 6px;
-            background-color: var(--primary);
-            border-radius: 50%;
-        }
-
-        /* --- CONCLUSION GRID --- */
-        .conclusion-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            margin-top: 32px;
-        }
-
-        .conclusion-grid .card {
-            margin-bottom: 0;
-            padding: 32px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .conclusion-grid .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--primary);
-        }
-
-        .conclusion-grid h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-
-        .conclusion-grid p {
-            font-size: 14.5px;
-            line-height: 1.75;
-            margin-bottom: 0;
-            text-align: justify;
-        }
-
         footer {
             background: #003322;
             color: rgba(255, 255, 255, 0.7);
@@ -404,13 +230,8 @@
         @media(max-width: 768px){
             .navbar { flex-direction: column; gap: 16px; text-align: center; }
             .hero { padding: 60px 20px; min-height: auto; }
-            .section { padding: 40px 20px; }
-            .section-title h2 { font-size: 28px; }
-            .card { padding: 24px; }
-            .highlight { padding: 24px; }
         }
     </style>
-    <!-- Script API Tableau -->
     <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
 </head>
 <body>
@@ -419,7 +240,7 @@
     <nav class="navbar">
         <div class="nav-brand">KELOMPOK 6</div>
         <div class="nav-links">
-            <a href="index.html">Team</a>
+            <a href="index.html" class="active">Team</a>
             <a href="situation.html">Situation</a>
             <a href="complication.html">Complication</a>
             <a href="resolution.html">Resolution</a>
@@ -450,33 +271,14 @@
             <p>23082010229</p>
         </div>
     </div>
-    <a href="situation.html" class="start-button">Start Analisis</a>
+    <a href="situation.html" class="start-button">Mulai Analisis</a>
 </section>
+
 <footer>
     © 2026 Data Visualisasi Kelompok 6
 </footer>
 
 <script>
-    const setupResponsiveViz = (containerId) => {
-        const placeholder = document.getElementById(containerId);
-        const viz = placeholder.getElementsByTagName('object')[0];
-        
-        if (placeholder.offsetWidth > 800) {
-            viz.style.width = '100%';
-            viz.style.height = '850px'; 
-        } else if (placeholder.offsetWidth > 500) {
-            viz.style.width = '100%';
-            viz.style.height = '750px';
-        } else {
-            viz.style.width = '100%';
-            viz.style.height = '1200px'; 
-        }
-    };
-
-    setupResponsiveViz('viz_situation');
-    setupResponsiveViz('viz_complication');
-    setupResponsiveViz('viz_resolution');
-
     // Scroll to team on initial load so profiles are the first thing visible
     window.addEventListener('load', () => {
         const team = document.querySelector('.team');
@@ -484,26 +286,6 @@
             const y = team.getBoundingClientRect().top + window.pageYOffset - 80; // offset for sticky header
             window.scrollTo({ top: y, behavior: 'auto' });
         }
-    });
-
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-links a");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach(section => {
-            const top = section.offsetTop - 140;
-            if (scrollY >= top) current = section.getAttribute("id");
-        });
-
-        navLinks.forEach(link => {
-            link.style.background = "";
-            link.style.color = "";
-            if(link.getAttribute("href") === "#" + current){
-                link.style.background = "#006241";
-                link.style.color = "white";
-            }
-        });
     });
 </script>
 
