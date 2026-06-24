@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analisis Starbucks 2024–2025</title>
 
-    <!-- Google Fonts: Plus Jakarta Sans -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
@@ -86,6 +85,12 @@
             color: var(--primary);
         }
 
+        /* Highlight Menu Aktif di Header */
+        .nav-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
         .hero {
             min-height: 75vh;
             display: flex;
@@ -99,7 +104,6 @@
                 radial-gradient(circle at bottom right, rgba(0, 98, 65, 0.08), transparent 45%);
         }
 
-        /* Logo diperbesar & efek border/box-shadow dihapus sesuai revisi */
         .logo {
             width: 150px;
             height: 150px;
@@ -139,6 +143,7 @@
             font-size: 16px;
             font-weight: 400;
             line-height: 1.8;
+            text-align: center; /* Diubah menjadi rata tengah (center) */
         }
 
         .team {
@@ -147,6 +152,7 @@
             gap: 24px;
             flex-wrap: wrap;
             justify-content: center;
+            width: 100%;
         }
 
         .member {
@@ -157,11 +163,23 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             border: 1px solid rgba(0,0,0,0.02);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
         }
 
         .member:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.07);
+        }
+
+        .member img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .member h3 {
@@ -178,180 +196,25 @@
             letter-spacing: 0.5px;
         }
 
-        .section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 60px 24px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-            position: relative;
+        .start-button {
             display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 4px;
-            background: var(--primary); /* Diubah ke warna primary */
-            border-radius: 2px;
-        }
-
-        /* --- CONTAINER & CARD STYLING --- */
-        .tableau-container, .card, .highlight {
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, box-shadow;
-        }
-
-        .tableau-container {
-            background: white;
-            padding: 16px;
-            border-radius: 24px;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.04);
-            margin-bottom: 32px;
-            overflow: hidden;
-            width: 100%;
-            border: 1px solid rgba(0,0,0,0.01);
-        }
-
-        .tableau-container:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 45px rgba(0, 64, 40, 0.06);
-        }
-
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.03);
-            margin-bottom: 24px;
-            border: 1px solid rgba(0,0,0,0.01);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
-        }
-
-        .card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-            letter-spacing: -0.3px;
-        }
-
-        .card p { 
-            font-size: 15.5px;
-            color: var(--text-light);
-            line-height: 1.85; 
-            text-align: justify;
-            margin-bottom: 16px;
-        }
-        
-        .card p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* --- INSIGHT LISTS (HIGHLIGHT) --- */
-        .highlight {
-            background: #ffffff;
-            border-left: 6px solid var(--primary);
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 32px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-        }
-
-        .highlight:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(0, 98, 65, 0.06);
-        }
-
-        .highlight h4 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .highlight ul {
-            list-style: none;
-            display: grid;
-            gap: 16px;
-        }
-
-        .highlight li {
-            font-size: 15px;
-            color: var(--text-light);
-            line-height: 1.7;
-            position: relative;
-            padding-left: 24px;
-            text-align: justify;
-        }
-
-        /* Warna Bullet Bulat Diubah Menggunakan Warna Primary (Hijau Tua) */
-        .highlight li::before {
-            content: "";
-            position: absolute;
-            left: 4px;
-            top: 10px;
-            width: 6px;
-            height: 6px;
-            background-color: var(--primary);
-            border-radius: 50%;
-        }
-
-        /* --- CONCLUSION GRID --- */
-        .conclusion-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            margin-top: 32px;
-        }
-
-        .conclusion-grid .card {
-            margin-bottom: 0;
-            padding: 32px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .conclusion-grid .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
+            margin-top: 40px;
+            padding: 16px 48px;
             background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 98, 65, 0.2);
         }
 
-        .conclusion-grid h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-
-        .conclusion-grid p {
-            font-size: 14.5px;
-            line-height: 1.75;
-            margin-bottom: 0;
-            text-align: justify;
+        .start-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 168, 98, 0.3);
         }
 
         footer {
@@ -367,13 +230,8 @@
         @media(max-width: 768px){
             .navbar { flex-direction: column; gap: 16px; text-align: center; }
             .hero { padding: 60px 20px; min-height: auto; }
-            .section { padding: 40px 20px; }
-            .section-title h2 { font-size: 28px; }
-            .card { padding: 24px; }
-            .highlight { padding: 24px; }
         }
     </style>
-    <!-- Script API Tableau -->
     <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
 </head>
 <body>
@@ -382,10 +240,11 @@
     <nav class="navbar">
         <div class="nav-brand">KELOMPOK 6</div>
         <div class="nav-links">
-            <a href="#situation">Situation</a>
-            <a href="#complication">Complication</a>
-            <a href="#resolution">Resolution</a>
-            <a href="#conclusion">Conclusion</a>
+            <a href="index.html" class="active">Team</a>
+            <a href="situation.html">Situation</a>
+            <a href="complication.html">Complication</a>
+            <a href="resolution.html">Resolution</a>
+            <a href="conclusion.html">Conclusion</a>
         </div>
     </nav>
 </header>
@@ -402,169 +261,17 @@
 
     <div class="team">
         <div class="member">
+            <img src="img/fatma.jpeg" alt="Sri Tutut Fatmasari">
             <h3>Sri Tutut Fatmasari</h3>
             <p>23082010012</p>
         </div>
         <div class="member">
+            <img src="img/adel.png" alt="Adeline Angelique">
             <h3>Adeline Angelique</h3>
             <p>23082010229</p>
         </div>
     </div>
-</section>
-
-<!-- --- SECTION 1: SITUATION --- -->
-<section id="situation" class="section">
-    <div class="section-title">
-        <h2>Situation</h2>
-    </div>
-
-    <!-- Responsive Tableau Embed (Situation) -->
-    <div class="tableau-container">
-        <div class='tableauPlaceholder' id='viz_situation' style='position: relative; width: 100%;'>
-            <object class='tableauViz' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                <param name='embed_code_version' value='3' /> 
-                <param name='site_root' value='' />
-                <param name='name' value='ProjectStarbucks&#47;Situation' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='language' value='en-US' />
-            </object>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Deskripsi Dashboard</h3>
-        <p>Dashboard Situation menampilkan gambaran umum kondisi bisnis Starbucks pada periode 2024–2025 yang mencakup kinerja penjualan, karakteristik pelanggan, serta pola penggunaan kanal pemesanan. Visualisasi utama meliputi tren perbandingan jumlah pesanan antara tahun 2024 dan 2025, distribusi demografi pelanggan berdasarkan kelompok usia, komposisi produk antara minuman dan makanan, serta kontribusi kanal pemesanan dan wilayah penjualan. Dashboard ini digunakan untuk memberikan gambaran kondisi bisnis secara keseluruhan sebelum dilakukan analisis lebih lanjut.</p>
-    </div>
-
-    <div class="highlight">
-        <h4>Insight (Kondisi Saat Ini)</h4>
-        <ul>
-            <li><strong>Kinerja penjualan tahun 2025</strong> menunjukkan tren yang stabil dan berada di atas performa tahun sebelumnya, dengan pencapaian total 50.068 pesanan senilai $744.662,49 dari 14.482 pelanggan serta lonjakan permintaan tertinggi pada bulan Juli dan Oktober.</li>
-            <li><strong>Demografi pasar utama</strong> sangat didominasi oleh kelompok usia produktif muda, di mana segmen usia 25–34 tahun memegang porsi terbesar sebesar 30%, diikuti oleh kelompok usia 35–44 tahun dan 18–24 tahun.</li>
-            <li><strong>Komposisi penjualan produk</strong> masih memperlihatkan ketimpangan yang signifikan karena lini minuman mendominasi sebesar 68% dari total transaksi, sementara kontribusi produk makanan baru mencapai 32%.</li>
-            <li><strong>Karakteristik kanal dan wilayah</strong> menandakan bahwa pelanggan dengan status member lebih aktif bertransaksi melalui Mobile App, sedangkan konsumen non-member lebih memilih Drive-Thru, kasir In-Store, atau Kiosk, dengan wilayah Suburban sebagai penyumbang pendapatan terbesar.</li>
-        </ul>
-    </div>
-</section>
-
-<!-- --- SECTION 2: COMPLICATION --- -->
-<section id="complication" class="section">
-    <div class="section-title">
-        <h2>Complication</h2>
-    </div>
-
-    <!-- Responsive Tableau Embed (Complication) -->
-    <div class="tableau-container">
-        <div class='tableauPlaceholder' id='viz_complication' style='position: relative; width: 100%;'>
-            <object class='tableauViz' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                <param name='embed_code_version' value='3' /> 
-                <param name='site_root' value='' />
-                <param name='name' value='ProjectStarbucks&#47;Complication' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='language' value='en-US' />
-            </object>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Deskripsi Dashboard</h3>
-        <p>Dashboard Complication menampilkan analisis terhadap berbagai tantangan yang terjadi dalam bisnis Starbucks, khususnya terkait pertumbuhan yang stagnan. Visualisasi pada dashboard ini mencakup perbandingan pertumbuhan pesanan, pendapatan, dan jumlah pelanggan yang masih berada pada level rendah, distribusi kontribusi pelanggan berdasarkan kelompok usia, serta pola ketergantungan terhadap segmen pelanggan tertentu. Selain itu, dashboard ini juga memperlihatkan ketidakseimbangan kontribusi kanal pemesanan serta dominasi produk minuman di seluruh channel penjualan.</p>
-    </div>
-
-    <div class="highlight">
-        <h4>Insight (Tantangan Bisnis)</h4>
-        <ul>
-            <li><strong>Stagnasi pertumbuhan riil</strong> menjadi tantangan utama karena ekspansi bisnis tahun 2025 melambat di bawah 1%, dengan kenaikan volume pesanan yang hanya menyentuh angka 0,27%, pendapatan 0,36%, dan penambahan pelanggan baru sebesar 0,21%.</li>
-            <li><strong>Risiko ketergantungan segmen</strong> yang tinggi terlihat dari profil transaksi member maupun non-member yang bertumpu pada kelompok usia 25–34 tahun, sehingga bisnis menjadi rentan jika terjadi pergeseran tren atau perilaku pada kelompok umur tersebut.</li>
-            <li><strong>Optimalisasi kanal penjualan</strong> masih belum merata akibat kontribusi pendapatan yang menumpuk dan terkonsentrasi pada beberapa kanal utama, sementara potensi kanal digital dan konvensional lainnya belum tergali maksimal.</li>
-            <li><strong>Rendahnya proporsi makanan</strong> di hampir seluruh lini pemesanan mengindikasikan bahwa strategi cross-selling serta program bundling menu belum berjalan optimal untuk mendongkrak nilai transaksi harian.</li>
-        </ul>
-    </div>
-</section>
-
-<!-- --- SECTION 3: RESOLUTION --- -->
-<section id="resolution" class="section">
-    <div class="section-title">
-        <h2>Resolution</h2>
-    </div>
-
-    <!-- Responsive Tableau Embed (Resolution) -->
-    <div class="tableau-container">
-        <div class='tableauPlaceholder' id='viz_resolution' style='position: relative; width: 100%;'>
-            <object class='tableauViz' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-                <param name='embed_code_version' value='3' /> 
-                <param name='site_root' value='' />
-                <param name='name' value='ProjectStarbucks&#47;Resolution' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='language' value='en-US' />
-            </object>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Deskripsi Dashboard</h3>
-        <p>Dashboard Resolution menampilkan berbagai strategi yang dirancang untuk meningkatkan pertumbuhan bisnis Starbucks pada tahun 2026. Visualisasi pada dashboard ini mencakup target pertumbuhan yang ditetapkan sebesar 5%, strategi peningkatan loyalitas pelanggan melalui program membership, optimalisasi penjualan makanan melalui bundling produk, serta pendekatan personalisasi berdasarkan perilaku pelanggan. Selain itu, dashboard ini juga menampilkan prioritas strategi berdasarkan kanal pemesanan, yaitu Drive-Thru, Mobile App, serta In-Store dan Kiosk, yang masing-masing memiliki pendekatan strategi yang berbeda untuk meningkatkan nilai transaksi dan engagement pelanggan.</p>
-    </div>
-
-    <div class="highlight">
-        <h4>Rekomendasi Rencana Strategis 2026</h4>
-        <ul>
-            <li><strong>Target pertumbuhan moderat sebesar 5%</strong> ditetapkan sebagai sasaran realistis untuk tahun 2026, yang diproyeksikan mampu menyumbang tambahan 2.503 pesanan, menaikkan pendapatan senilai $37.233,12, serta menjaring 724 pelanggan baru.</li>
-            <li><strong>Konversi basis pelanggan non-member</strong> perlu diakselerasi lewat program loyalitas yang lebih agresif karena kelompok ini memegang potensi pasar yang besar dengan kontribusi mencapai 49,5% dari total pendapatan saat ini.</li>
-            <li><strong>Strategi bundling makanan dan minuman</strong> disarankan mulai diimplementasikan secara masif di setiap kanal guna mendongkrak Food Attachment Rate sekaligus menaikkan nilai pengeluaran rata-rata per transaksi.</li>
-            <li><strong>Personalisasi layanan dan promosi</strong> berbasis preferensi kustomisasi menu harus dioptimalkan untuk memfasilitasi konsumen loyal, dengan fokus komunikasi yang diarahkan pada kelompok pengeluaran menengah sebagai populasi terbesar.</li>
-            <li><strong>Prioritas taktis per kanal penjualan</strong> diterapkan secara spesifik melalui bundling menu kilat untuk Drive-Thru sebagai prioritas tertinggi, program reward berbasis kustomisasi pada Mobile App, serta paket hemat reguler untuk transaksi kasir In-Store dan Kiosk.</li>
-        </ul>
-    </div>
-</section>
-
-<!-- --- SECTION 4: CONCLUSION --- -->
-<section id="conclusion" class="section">
-    <div class="section-title">
-        <h2>Conclusion</h2>
-    </div>
-
-    <div class="card">
-        <h3>Ringkasan</h3>
-        <p>Berdasarkan rangkaian analisis dashboard menggunakan pendekatan kerangka kerja SCR, ditemukan bahwa bisnis Starbucks berada dalam kondisi performa penjualan yang stabil namun menghadapi risiko stagnasi pertumbuhan jangka panjang karena laju pertumbuhan tahunan berada di bawah 1%. Visualisasi data menunjukkan ketergantungan yang tinggi pada segmen demografi tunggal (usia 25–34 tahun) serta ketimpangan proporsi produk di mana penjualan minuman jauh melampaui produk makanan di seluruh kanal penjualan yang tersedia.</p>
-        <p>Untuk mengatasi tantangan tersebut, rangkaian rekomendasi strategis telah disusun guna membidik pertumbuhan moderat sebesar 5% pada tahun 2026. Fokus utama diarahkan pada optimalisasi akuisisi program loyalitas bagi pelanggan non-member, integrasi strategi promo produk bundling secara lintas kanal pemesanan, serta pemanfaatan fitur personalisasi kustomisasi menu guna mendorong peningkatan nilai transaksi rata-rata (AOV) sekaligus memperluas basis pasar pelanggan secara berkelanjutan.</p>
-    </div>
-
-    <div class="conclusion-grid">
-        <div class="card">
-            <h3>S - Situation</h3>
-            <p>Bisnis mencatat total 50.068 pesanan sepanjang tahun 2025 dengan performa yang stabil di atas tahun sebelumnya. Pasar utama saat ini didominasi oleh wilayah Suburban, kelompok usia produktif 25–34 tahun, serta penjualan lini produk minuman yang mencapai porsi 68%.</p>
-        </div>
-        <div class="card">
-            <h3>C - Complication</h3>
-            <p>Muncul tantangan berupa stagnasi pertumbuhan riil yang tertahan di bawah angka 1% pada semua aspek operasional. Kondisi ini diperparah oleh ketergantungan tinggi pada satu segmen usia, ketimpangan antar-kanal, serta rendahnya pembelian produk makanan.</p>
-        </div>
-        <div class="card">
-            <h3>R - Resolution</h3>
-            <p>Rekomendasi taktis difokuskan pada pengejaran target pertumbuhan 5% untuk tahun depan melalui konversi pelanggan non-member, peningkatan pembelian makanan lewat paket bundling, promosi personal, serta penentuan prioritas strategi yang adaptif di setiap kanal.</p>
-        </div>
-    </div>
+    <a href="situation.html" class="start-button">Mulai Analisis</a>
 </section>
 
 <footer>
@@ -572,44 +279,13 @@
 </footer>
 
 <script>
-    const setupResponsiveViz = (containerId) => {
-        const placeholder = document.getElementById(containerId);
-        const viz = placeholder.getElementsByTagName('object')[0];
-        
-        if (placeholder.offsetWidth > 800) {
-            viz.style.width = '100%';
-            viz.style.height = '850px'; 
-        } else if (placeholder.offsetWidth > 500) {
-            viz.style.width = '100%';
-            viz.style.height = '750px';
-        } else {
-            viz.style.width = '100%';
-            viz.style.height = '1200px'; 
+    // Scroll to team on initial load so profiles are the first thing visible
+    window.addEventListener('load', () => {
+        const team = document.querySelector('.team');
+        if (team) {
+            const y = team.getBoundingClientRect().top + window.pageYOffset - 80; // offset for sticky header
+            window.scrollTo({ top: y, behavior: 'auto' });
         }
-    };
-
-    setupResponsiveViz('viz_situation');
-    setupResponsiveViz('viz_complication');
-    setupResponsiveViz('viz_resolution');
-
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".nav-links a");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach(section => {
-            const top = section.offsetTop - 140;
-            if (scrollY >= top) current = section.getAttribute("id");
-        });
-
-        navLinks.forEach(link => {
-            link.style.background = "";
-            link.style.color = "";
-            if(link.getAttribute("href") === "#" + current){
-                link.style.background = "#006241";
-                link.style.color = "white";
-            }
-        });
     });
 </script>
 

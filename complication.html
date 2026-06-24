@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complication - Analisis Starbucks 2024–2025</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root{--primary:#006241;--primary-light:#e8f5ef;--secondary:#00A862;--bg:#f4f7f6;--text:#2b3641;--text-light:#475569;--muted:#64748b}
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+        body{background:var(--bg);color:var(--text);line-height:1.75}
+        header{position:sticky;top:0;z-index:999;background:rgba(255,255,255,0.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.04)}
+        .navbar{max-width:1200px;margin:auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+        .nav-brand{font-size:16px;font-weight:800;color:var(--primary);letter-spacing:1px}
+        .nav-links{display:flex;gap:8px;flex-wrap:wrap}
+        .nav-links a{text-decoration:none;padding:8px 16px;border-radius:999px;color:var(--text-light);font-weight:600;font-size:14px;transition:all .3s}
+        .nav-links a:hover,.nav-links a:focus{background:var(--primary-light);color:var(--primary)}
+        
+        /* Highlight Menu Aktif di Header */
+        .nav-links a.active {background:var(--primary);color:white}
+
+        .section{max-width:1200px;margin:auto;padding:60px 24px}
+        .section-title{text-align:center;margin-bottom:40px}
+        .section-title h2{font-size:36px;font-weight:800;color:var(--primary)}
+        
+        /* --- BASE STYLING & ANIMASI TIMBUL UNTUK CARD & HIGHLIGHT --- */
+        .tableau-container, .card, .highlight {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, box-shadow;
+        }
+
+        .tableau-container{background:white;padding:16px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.04);margin-bottom:32px;overflow:hidden;width:100%;border:1px solid rgba(0,0,0,.01)}
+        .tableau-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(0, 64, 40, 0.06);
+        }
+        
+        /* Justify Teks pada Card */
+        .card{background:white;padding:40px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.03);margin-bottom:24px;border:1px solid rgba(0,0,0,.01)}
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+        .card h3 {margin-bottom:12px; font-size: 22px; font-weight: 700; color: var(--primary);}
+        .card p{text-align:justify; color: var(--text-light); font-size: 15.5px;}
+        
+        /* Menyesuaikan highlight agar seragam dengan card (Tanpa garis samping) */
+        .highlight{background:#ffffff;padding:40px;border-radius:24px;box-shadow:0 12px 36px rgba(0,0,0,.03);margin-bottom:32px;border:1px solid rgba(0,0,0,.01)}
+        .highlight:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+        .highlight h4 {margin-bottom:16px; font-size: 22px; font-weight: 700; color: var(--primary);}
+        .highlight ul{text-align:justify; list-style: none; display: grid; gap: 12px;}
+        .highlight li{
+            font-size: 15.5px;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 24px;
+        }
+        
+        /* Bullet point bulat custom menggunakan warna primary */
+        .highlight li::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Styling Tombol Navigasi Sesuai Persis dengan index.html */
+        .nav-buttons {display:flex;justify-content:center;gap:12px;margin-top:32px;margin-bottom:16px}
+        .btn {text-decoration:none;padding:12px 24px;border-radius:999px;font-weight:600;font-size:14px;transition:all .3s ease;display:inline-flex;align-items:center}
+        
+        .btn-prev {background:transparent;color:var(--text-light);border:1px solid #cbd5e1}
+        .btn-prev:hover {background:#f1f5f9;color:var(--text);transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,0.04)}
+        .btn-prev:active {transform:translateY(0)}
+
+        .btn-next {background:var(--primary);color:white;border:1px solid var(--primary);box-shadow:0 8px 20px rgba(0, 98, 65, 0.2)}
+        .btn-next:hover {background:var(--secondary);border-color:var(--secondary);transform:translateY(-2px);box-shadow:0 12px 30px rgba(0, 168, 98, 0.3)}
+        .btn-next:active {transform:translateY(0)}
+
+        footer{background:#003322;color:rgba(255,255,255,.7);text-align:center;padding:24px;font-size:14px}
+        @media(max-width:768px){.navbar{flex-direction:column;gap:16px;text-align:center}.section{padding:40px 20px}.card{padding:24px}.highlight{padding:24px}.nav-buttons{justify-content:center;width:100%}}
+    </style>
+    <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="nav-brand">KELOMPOK 6</div>
+        <div class="nav-links">
+            <a href="index.html">Team</a>
+            <a href="situation.html">Situation</a>
+            <a href="complication.html" class="active">Complication</a>
+            <a href="resolution.html">Resolution</a>
+            <a href="conclusion.html">Conclusion</a>
+        </div>
+    </nav>
+</header>
+
+<section id="complication" class="section">
+    <div class="section-title">
+        <h2>Complication</h2>
+    </div>
+
+    <!-- Responsive Tableau Embed (Complication) -->
+    <div class="tableau-container">
+        <div class='tableauPlaceholder' id='viz_complication' style='position: relative; width: 100%;'>
+            <object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='ProjectStarbucks&#47;Complication' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' />
+            </object>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Deskripsi Dashboard</h3>
+        <p>Melalui visualisasi tren pesanan, pendapatan, dan jumlah pelanggan yang berada di level rendah, dashboard ini memetakan akar masalah stagnasi pertumbuhan Starbucks, termasuk ketidakseimbangan kanal penjualan dan dominasi kategori produk. Namun, analisis ini juga mengungkap fakta krusial bahwa kekuatan utama bisnis saat ini sangat bergantung pada segmen pelanggan usia 25–34 tahun. Tingginya ketergantungan pada kelompok ini membuka peluang pasar yang sangat besar untuk dioptimalkan sebagai pendorong utama pemulihan bisnis.</p>
+    </div>
+
+    <div class="highlight">
+        <h4>Insight Utama</h4>
+        <ul>
+            <li>Kelompok usia 25–34 tahun menjadi kelompok usia dengan pendapatan terbesar mendominasi baik di kategori Anggota maupun Non-Anggota serta menunjukkan aktivitas transaksi terbanyak di Mobile App</li>
+            <li>Mobile App terbukti menjadi kanal penyumbang pendapatan utama dengan persentase mencapai 52% dari total pendapatan keseluruhan</li>
+            <li>Rendahnya proporsi pembelian produk makanan terjadi secara merata di hampir seluruh kanal pemesanan</li>
+        </ul>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="situation.html" class="btn btn-prev">← Kembali</a>
+        <a href="resolution.html" class="btn btn-next">Selanjutnya →</a>
+    </div>
+</section>
+
+<footer>
+    © 2026 Data Visualisasi Kelompok 6
+</footer>
+
+<script>
+    const setupResponsiveViz = (containerId) => {
+        const placeholder = document.getElementById(containerId);
+        if (!placeholder) return;
+        const viz = placeholder.getElementsByTagName('object')[0];
+        if (!viz) return;
+        if (placeholder.offsetWidth > 800) { viz.style.width = '100%'; viz.style.height = '850px'; }
+        else if (placeholder.offsetWidth > 500) { viz.style.width = '100%'; viz.style.height = '750px'; }
+        else { viz.style.width = '100%'; viz.style.height = '1200px'; }
+    };
+
+    setupResponsiveViz('viz_complication');
+</script>
+</body>
+</html>
